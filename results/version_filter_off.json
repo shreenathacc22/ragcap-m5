@@ -14,7 +14,7 @@
   "trap_stale_in_context": 10,
   "control_cases": 20,
   "control_pass": 20,
-  "median_ms_single_pass": 64.0
+  "median_ms_single_pass": 12.0
  },
  "rows": [
   {
@@ -37,7 +37,7 @@
     "Kafka Incident Escalation Path v2",
     "Kafka Incident Escalation Path v1 OLD"
    ],
-   "ms": 183
+   "ms": 55
   },
   {
    "id": "doc-002",
@@ -59,7 +59,7 @@
     "Kafka Consumer Lag Runbook v2",
     "Kafka Consumer Lag Runbook v1 OLD"
    ],
-   "ms": 64
+   "ms": 12
   },
   {
    "id": "doc-003",
@@ -77,7 +77,7 @@
     "Kafka TLS Certificate Rotation v2",
     "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 65
+   "ms": 12
   },
   {
    "id": "doc-004",
@@ -99,7 +99,7 @@
     "Kafka Disk Utilisation Alerting v1 OLD",
     "Kafka Replication Settings v2"
    ],
-   "ms": 63
+   "ms": 12
   },
   {
    "id": "doc-005",
@@ -121,7 +121,7 @@
     "Kafka Topic Naming Standard v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 62
+   "ms": 14
   },
   {
    "id": "doc-006",
@@ -143,7 +143,7 @@
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Incident Escalation Path v1 OLD"
    ],
-   "ms": 64
+   "ms": 12
   },
   {
    "id": "doc-007",
@@ -165,7 +165,7 @@
     "Kafka Retention Policy v2",
     "Kafka TLS Certificate Rotation v1 OLD"
    ],
-   "ms": 64
+   "ms": 11
   },
   {
    "id": "doc-008",
@@ -187,7 +187,7 @@
     "Kafka Retention Policy v1 OLD",
     "Kafka Retention Policy v2"
    ],
-   "ms": 65
+   "ms": 11
   },
   {
    "id": "doc-009",
@@ -205,7 +205,7 @@
     "Kafka Replication Settings v2",
     "Kafka Topic Naming Standard v1 OLD"
    ],
-   "ms": 60
+   "ms": 11
   },
   {
    "id": "doc-010",
@@ -223,7 +223,7 @@
     "Kafka Topic Naming Standard v2",
     "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 61
+   "ms": 11
   },
   {
    "id": "doc-011",
@@ -241,7 +241,7 @@
     "Kafka Replication Settings v1 OLD",
     "Kafka Retention Policy v2"
    ],
-   "ms": 66
+   "ms": 14
   },
   {
    "id": "doc-012",
@@ -259,7 +259,7 @@
     "Kafka Disk Utilisation Alerting v1 OLD",
     "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 64
+   "ms": 12
   },
   {
    "id": "doc-013",
@@ -277,7 +277,7 @@
     "Kafka Disk Utilisation Alerting v1 OLD",
     "Kafka Incident Escalation Path v1 OLD"
    ],
-   "ms": 64
+   "ms": 12
   },
   {
    "id": "doc-014",
@@ -295,7 +295,7 @@
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 66
+   "ms": 11
   },
   {
    "id": "doc-015",
@@ -319,7 +319,7 @@
     "Kafka Broker Restart Procedure v1 OLD",
     "Kafka Broker Restart Procedure v2"
    ],
-   "ms": 142
+   "ms": 14
   },
   {
    "id": "doc-016",
@@ -341,7 +341,7 @@
     "Kafka Broker Restart Procedure v1 OLD",
     "Kafka Broker Restart Procedure v2"
    ],
-   "ms": 210
+   "ms": 14
   },
   {
    "id": "h-doc-01",
@@ -359,7 +359,7 @@
     "Kafka Retention Policy v2",
     "Kafka Retention Policy v1 OLD"
    ],
-   "ms": 70
+   "ms": 11
   },
   {
    "id": "h-doc-02",
@@ -377,7 +377,7 @@
     "Kafka Retention Policy v1 OLD",
     "Kafka Retention Policy v2"
    ],
-   "ms": 83
+   "ms": 14
   },
   {
    "id": "h-doc-03",
@@ -395,7 +395,7 @@
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 60
+   "ms": 14
   },
   {
    "id": "h-doc-04",
@@ -413,7 +413,7 @@
     "Kafka Disk Utilisation Alerting v1 OLD",
     "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 61
+   "ms": 11
   },
   {
    "id": "h-doc-05",
@@ -431,7 +431,7 @@
     "Kafka Retention Policy v2",
     "Kafka Retention Policy v1 OLD"
    ],
-   "ms": 59
+   "ms": 11
   },
   {
    "id": "h-doc-06",
@@ -449,7 +449,7 @@
     "Kafka Retention Policy v2",
     "Kafka Retention Policy v1 OLD"
    ],
-   "ms": 64
+   "ms": 11
   },
   {
    "id": "h-doc-07",
@@ -467,7 +467,7 @@
     "Kafka Disk Utilisation Alerting v1 OLD",
     "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 63
+   "ms": 14
   },
   {
    "id": "h-doc-08",
@@ -485,7 +485,7 @@
     "Kafka Retention Policy v2",
     "Kafka Consumer Lag Runbook v1 OLD"
    ],
-   "ms": 65
+   "ms": 15
   },
   {
    "id": "h-doc-09",
@@ -503,7 +503,7 @@
     "Kafka Replication Settings v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 63
+   "ms": 11
   },
   {
    "id": "h-doc-10",
@@ -521,7 +521,7 @@
     "Kafka Disk Utilisation Alerting v1 OLD",
     "Kafka Incident Escalation Path v1 OLD"
    ],
-   "ms": 66
+   "ms": 12
   },
   {
    "id": "h-doc-11",
@@ -539,7 +539,7 @@
     "Kafka Retention Policy v2",
     "Kafka Incident Escalation Path v1 OLD"
    ],
-   "ms": 61
+   "ms": 12
   },
   {
    "id": "h-doc-12",
@@ -557,7 +557,7 @@
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 63
+   "ms": 12
   },
   {
    "id": "h-doc-13",
@@ -575,7 +575,7 @@
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 63
+   "ms": 12
   },
   {
    "id": "h-doc-14",
@@ -593,7 +593,7 @@
     "Kafka Incident Escalation Path v1 OLD",
     "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 70
+   "ms": 17
   },
   {
    "id": "h-doc-15",
@@ -615,7 +615,7 @@
     "Kafka Topic Naming Standard v1 OLD",
     "Kafka Topic Naming Standard v2"
    ],
-   "ms": 62
+   "ms": 18
   },
   {
    "id": "h-doc-16",
@@ -633,7 +633,7 @@
     "Kafka Replication Settings v2",
     "Kafka Disk Utilisation Alerting v1 OLD"
    ],
-   "ms": 68
+   "ms": 18
   }
  ]
 }

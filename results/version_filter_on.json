@@ -14,7 +14,7 @@
   "trap_stale_in_context": 6,
   "control_cases": 20,
   "control_pass": 20,
-  "median_ms_single_pass": 63.5
+  "median_ms_single_pass": 13.0
  },
  "rows": [
   {
@@ -33,7 +33,7 @@
     "Kafka Broker Restart Procedure v2",
     "Kafka Replication Settings v2"
    ],
-   "ms": 61
+   "ms": 12
   },
   {
    "id": "doc-002",
@@ -51,7 +51,7 @@
     "Kafka Replication Settings v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 62
+   "ms": 13
   },
   {
    "id": "doc-003",
@@ -69,7 +69,7 @@
     "Kafka Retention Policy v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 63
+   "ms": 16
   },
   {
    "id": "doc-004",
@@ -89,7 +89,7 @@
     "Kafka Incident Escalation Path v2",
     "Kafka Retention Policy v2"
    ],
-   "ms": 62
+   "ms": 13
   },
   {
    "id": "doc-005",
@@ -107,7 +107,7 @@
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 66
+   "ms": 19
   },
   {
    "id": "doc-006",
@@ -127,7 +127,7 @@
     "Kafka Consumer Lag Runbook v2",
     "Kafka TLS Certificate Rotation v2"
    ],
-   "ms": 64
+   "ms": 13
   },
   {
    "id": "doc-007",
@@ -147,7 +147,7 @@
     "Kafka Replication Settings v2",
     "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 60
+   "ms": 11
   },
   {
    "id": "doc-008",
@@ -165,9 +165,9 @@
     "Kafka Retention Policy v2",
     "Kafka Disk Utilisation Alerting v2",
     "Kafka Broker Restart Procedure v2",
-    "Kafka TLS Certificate Rotation v2"
+    "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 60
+   "ms": 13
   },
   {
    "id": "doc-009",
@@ -185,7 +185,7 @@
     "Kafka Topic Naming Standard v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 64
+   "ms": 16
   },
   {
    "id": "doc-010",
@@ -203,7 +203,7 @@
     "Kafka Incident Escalation Path v2",
     "Kafka Retention Policy v2"
    ],
-   "ms": 64
+   "ms": 14
   },
   {
    "id": "doc-011",
@@ -221,7 +221,7 @@
     "Kafka Replication Settings v2",
     "Kafka Broker Restart Procedure v2"
    ],
-   "ms": 68
+   "ms": 16
   },
   {
    "id": "doc-012",
@@ -239,7 +239,7 @@
     "Kafka Consumer Lag Runbook v2",
     "Kafka Topic Naming Standard v2"
    ],
-   "ms": 63
+   "ms": 12
   },
   {
    "id": "doc-013",
@@ -257,7 +257,7 @@
     "Kafka Broker Restart Procedure v2",
     "Kafka Retention Policy v2"
    ],
-   "ms": 64
+   "ms": 14
   },
   {
    "id": "doc-014",
@@ -275,7 +275,7 @@
     "Kafka Topic Naming Standard v2",
     "Kafka Replication Settings v2"
    ],
-   "ms": 65
+   "ms": 13
   },
   {
    "id": "doc-015",
@@ -295,7 +295,7 @@
     "Kafka Replication Settings v2",
     "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 149
+   "ms": 19
   },
   {
    "id": "doc-016",
@@ -313,7 +313,7 @@
     "Kafka Replication Settings v2",
     "Kafka Retention Policy v2"
    ],
-   "ms": 188
+   "ms": 16
   },
   {
    "id": "h-doc-01",
@@ -331,7 +331,7 @@
     "Kafka Replication Settings v2",
     "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 63
+   "ms": 10
   },
   {
    "id": "h-doc-02",
@@ -347,9 +347,9 @@
     "Kafka Retention Policy v2",
     "Kafka Consumer Lag Runbook v2",
     "Kafka Broker Restart Procedure v2",
-    "Kafka TLS Certificate Rotation v2"
+    "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 66
+   "ms": 13
   },
   {
    "id": "h-doc-03",
@@ -367,7 +367,7 @@
     "Kafka TLS Certificate Rotation v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 61
+   "ms": 17
   },
   {
    "id": "h-doc-04",
@@ -385,7 +385,7 @@
     "Kafka Broker Restart Procedure v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 61
+   "ms": 11
   },
   {
    "id": "h-doc-05",
@@ -403,7 +403,7 @@
     "Kafka Broker Restart Procedure v2",
     "Kafka Replication Settings v2"
    ],
-   "ms": 67
+   "ms": 11
   },
   {
    "id": "h-doc-06",
@@ -421,7 +421,7 @@
     "Kafka Replication Settings v2",
     "Kafka Disk Utilisation Alerting v2"
    ],
-   "ms": 63
+   "ms": 15
   },
   {
    "id": "h-doc-07",
@@ -439,7 +439,7 @@
     "Kafka Broker Restart Procedure v2",
     "Kafka Retention Policy v2"
    ],
-   "ms": 65
+   "ms": 19
   },
   {
    "id": "h-doc-08",
@@ -457,7 +457,7 @@
     "Kafka Broker Restart Procedure v2",
     "Kafka Topic Naming Standard v2"
    ],
-   "ms": 66
+   "ms": 12
   },
   {
    "id": "h-doc-09",
@@ -475,7 +475,7 @@
     "Kafka Topic Naming Standard v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 63
+   "ms": 11
   },
   {
    "id": "h-doc-10",
@@ -493,7 +493,7 @@
     "Kafka Retention Policy v2",
     "Kafka Replication Settings v2"
    ],
-   "ms": 59
+   "ms": 12
   },
   {
    "id": "h-doc-11",
@@ -511,7 +511,7 @@
     "Kafka Topic Naming Standard v2",
     "Kafka Broker Restart Procedure v2"
    ],
-   "ms": 63
+   "ms": 11
   },
   {
    "id": "h-doc-12",
@@ -529,7 +529,7 @@
     "Kafka Replication Settings v2",
     "Kafka Incident Escalation Path v2"
    ],
-   "ms": 63
+   "ms": 12
   },
   {
    "id": "h-doc-13",
@@ -547,7 +547,7 @@
     "Kafka TLS Certificate Rotation v2",
     "Kafka Consumer Lag Runbook v2"
    ],
-   "ms": 62
+   "ms": 11
   },
   {
    "id": "h-doc-14",
@@ -565,7 +565,7 @@
     "Kafka Replication Settings v2",
     "Kafka Retention Policy v2"
    ],
-   "ms": 64
+   "ms": 14
   },
   {
    "id": "h-doc-15",
@@ -585,7 +585,7 @@
     "Kafka TLS Certificate Rotation v2",
     "Kafka Broker Restart Procedure v2"
    ],
-   "ms": 66
+   "ms": 14
   },
   {
    "id": "h-doc-16",
@@ -603,7 +603,7 @@
     "Kafka Incident Escalation Path v2",
     "Kafka Topic Naming Standard v2"
    ],
-   "ms": 73
+   "ms": 14
   }
  ]
 }

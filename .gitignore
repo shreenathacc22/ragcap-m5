@@ -7,3 +7,5 @@ uploads/
 results/*.log
 results/failed_series_*/
 traces.jsonl
+.pgdata/
+.venv-intel-old/

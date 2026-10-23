@@ -10,6 +10,8 @@ Writes results/pid_eval_<ts>.json and .md. No prompt was changed after seeing th
 """
 import argparse
 import json
+import platform
+import subprocess
 import re
 import time
 from pathlib import Path
@@ -71,7 +73,8 @@ if __name__ == "__main__":
     n = len(rows)
     kinds = {"a": "valve isolating a pump", "b": "controller + control valve", "c": "what an instrument measures, on what", "d": "which drawing / unit"}
     by_kind = {kinds[k]: f"{sum(r['pass'] for r in rows if r['kind']==k)}/{sum(1 for r in rows if r['kind']==k)}" for k in kinds}
-    m = {"vision_model": ing[0].get("vision_model", "qwen2.5vl:3b") if ing else "qwen2.5vl:3b",
+    from ragcap.vision import VISION_MODEL   # the model this run would use; older ingest results do not record it
+    m = {"vision_model": ing[0].get("vision_model", VISION_MODEL) if ing else VISION_MODEL,
          "vision_seconds_per_drawing": [r.get("vision_seconds") for r in ing] if ing else None,
          "tags": tags, "tag_correct_total": sum(t["correct"] for t in tags), "tag_expected_total": sum(t["expected"] for t in tags),
          "tag_invented_total": sum(len(t["invented"]) for t in tags),
@@ -79,10 +82,13 @@ if __name__ == "__main__":
          "qa_right_drawing_retrieved": sum(r["right_drawing_retrieved"] for r in rows) / n,
          "qa_answer_correct": sum(r["pass"] for r in rows) / n, "qa_by_kind": by_kind,
          "qa_mean_ms": sum(r["total_ms"] for r in rows) / n}
+    # Ollama runs on the Metal GPU on Apple Silicon and on the CPU on Intel Macs; record which machine produced the numbers
+    cpu = subprocess.run(["sysctl", "-n", "machdep.cpu.brand_string"], capture_output=True, text=True).stdout.strip() or platform.machine()
+    m["machine"] = f"{cpu} ({'Metal GPU' if platform.machine() == 'arm64' and platform.system() == 'Darwin' else 'CPU'})"
     ts = time.strftime("%Y%m%d_%H%M%S")
     Path(f"results/pid_eval_{ts}.json").write_text(json.dumps({"metrics": m, "rows": rows}, indent=1))
     md = ["# P&ID branch evaluation (step 24)", "",
-          f"Vision model {m['vision_model']} on CPU; seconds per drawing: {m['vision_seconds_per_drawing']}.", "",
+          f"Vision model {m['vision_model']} on {m['machine']}; seconds per drawing: {m['vision_seconds_per_drawing']}.", "",
           "| Drawing | Tags expected | Correct | Invented | Missed |", "|---|---|---|---|---|"]
     md += [f"| {t['drawing']} | {t['expected']} | {t['correct']} | {', '.join(t['invented']) or '-'} | {', '.join(t['missed']) or '-'} |" for t in tags]
     md += ["", "| QA metric (12 frozen questions, full graph) | Result |", "|---|---|",

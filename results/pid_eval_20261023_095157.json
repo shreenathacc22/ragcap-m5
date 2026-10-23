@@ -1,0 +1,173 @@
+{
+ "metrics": {
+  "vision_model": "qwen2.5vl:7b",
+  "vision_seconds_per_drawing": [
+   9.9,
+   7.5,
+   7.5
+  ],
+  "tags": [
+   {
+    "drawing": "P&ID-001",
+    "expected": 13,
+    "correct": 13,
+    "invented": [],
+    "missed": [],
+    "description_chars": 767
+   },
+   {
+    "drawing": "P&ID-002",
+    "expected": 13,
+    "correct": 13,
+    "invented": [],
+    "missed": [],
+    "description_chars": 758
+   },
+   {
+    "drawing": "P&ID-003",
+    "expected": 13,
+    "correct": 13,
+    "invented": [],
+    "missed": [],
+    "description_chars": 758
+   }
+  ],
+  "tag_correct_total": 39,
+  "tag_expected_total": 39,
+  "tag_invented_total": 0,
+  "qa_cases": 12,
+  "qa_route_documents": 1.0,
+  "qa_right_drawing_retrieved": 1.0,
+  "qa_answer_correct": 0.4166666666666667,
+  "qa_by_kind": {
+   "valve isolating a pump": "0/3",
+   "controller + control valve": "0/3",
+   "what an instrument measures, on what": "3/3",
+   "which drawing / unit": "2/3"
+  },
+  "qa_mean_ms": 4079.3333333333335,
+  "machine": "Apple M5 Pro (Metal GPU)"
+ },
+ "rows": [
+  {
+   "id": "pid-1a",
+   "kind": "a",
+   "question": "Which valve isolates the suction of pump P-101?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "Not in the knowledge base.",
+   "total_ms": 4534
+  },
+  {
+   "id": "pid-1b",
+   "kind": "b",
+   "question": "Which instrument controls the flow into tank T-102, and through which valve?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "Not in the knowledge base.",
+   "total_ms": 3493
+  },
+  {
+   "id": "pid-1c",
+   "kind": "c",
+   "question": "What does LT-101 measure, and on which equipment?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": true,
+   "answer": "The answer is in passage [1] (PID-001), section 4, under Instrument tags:\n\n\"LT-101: Level transmitter on T-101\"\n\nSo, LT-101 measures the level of the tank T-101, and it is on the equipment T-101.",
+   "total_ms": 5470
+  },
+  {
+   "id": "pid-1d",
+   "kind": "d",
+   "question": "Which drawing shows heat exchanger E-101, and what unit is it?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "The drawing that shows heat exchanger E-101 is PID-001, and it is a Heat Exchanger.",
+   "total_ms": 3850
+  },
+  {
+   "id": "pid-2a",
+   "kind": "a",
+   "question": "Which valve isolates the suction of pump P-201?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "Not in the knowledge base.",
+   "total_ms": 3630
+  },
+  {
+   "id": "pid-2b",
+   "kind": "b",
+   "question": "Which instrument controls the flow into tank T-202, and through which valve?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "Not in the knowledge base.",
+   "total_ms": 3536
+  },
+  {
+   "id": "pid-2c",
+   "kind": "c",
+   "question": "What does LT-201 measure, and on which equipment?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": true,
+   "answer": "According to passage [1] (PID-002), LT-201 measures the level of Tank T-201, and it is a level transmitter.",
+   "total_ms": 4867
+  },
+  {
+   "id": "pid-2d",
+   "kind": "d",
+   "question": "Which drawing shows heat exchanger E-201, and what unit is it?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": true,
+   "answer": "The drawing that shows heat exchanger E-201 is [3] (PID-002), and it is located in the Feed Transfer Rev B Sheet 1 of 1.",
+   "total_ms": 4002
+  },
+  {
+   "id": "pid-3a",
+   "kind": "a",
+   "question": "Which valve isolates the suction of pump P-301?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "Not in the knowledge base.",
+   "total_ms": 3333
+  },
+  {
+   "id": "pid-3b",
+   "kind": "b",
+   "question": "Which instrument controls the flow into tank T-302, and through which valve?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": false,
+   "answer": "Not in the knowledge base.",
+   "total_ms": 3544
+  },
+  {
+   "id": "pid-3c",
+   "kind": "c",
+   "question": "What does LT-301 measure, and on which equipment?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": true,
+   "answer": "According to passage [1] (PID-003), LT-301 measures the level of tank T-301, and it is a level transmitter.",
+   "total_ms": 4701
+  },
+  {
+   "id": "pid-3d",
+   "kind": "d",
+   "question": "Which drawing shows heat exchanger E-301, and what unit is it?",
+   "route": "documents",
+   "right_drawing_retrieved": true,
+   "pass": true,
+   "answer": "The drawing that shows heat exchanger E-301 is PID-003, Reflux Return Rev B Sheet 1 of 1, and it is a Heat Exchanger.",
+   "total_ms": 3992
+  }
+ ]
+}

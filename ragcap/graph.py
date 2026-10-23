@@ -157,8 +157,8 @@ def retrieve(s: State):
     conn = connect()
     try:   # pgvector >= 0.8: a filtered HNSW scan keeps scanning until k rows pass the filter instead of returning fewer
         conn.execute("SET hnsw.iterative_scan = relaxed_order")
-    except Exception:  # noqa: BLE001 — older pgvector: plain scan, still correct on a small table
-        pass
+    except Exception:  # noqa: BLE001 — older pgvector (0.6.2 in the local pgserver backend): widen the candidate
+        conn.execute("SET hnsw.ef_search = 1000")  # list instead, so the filter still leaves k rows on a larger table
     where = "WHERE d.superseded = false" if on else ""
     rows = conn.execute(
         f"""SELECT c.id, d.name, d.version, c.chunk_no, c.text, c.embedding <=> %s::vector AS dist, d.superseded

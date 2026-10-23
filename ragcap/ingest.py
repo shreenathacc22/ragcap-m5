@@ -8,15 +8,18 @@ stripped BEFORE embedding, so version status never leaks into the vector. CLI fl
 import argparse
 import json
 import re
+import subprocess
 import time
 from pathlib import Path
 
 import pandas as pd
 from psycopg import sql
 
+from .config import ROOT
 from .db import connect
 from .llm import embed
 
+DOCLING_PY = ROOT / ".venv-docling" / "bin" / "python"
 DOC_EXT = {".md", ".txt", ".pdf", ".docx", ".pptx", ".html"}
 TABLE_EXT = {".csv", ".xlsx", ".xls"}
 IMG_EXT = {".png", ".jpg", ".jpeg"}      # step 24: drawings, described by a vision model
@@ -31,10 +34,15 @@ def to_markdown(path: Path) -> str:
         from docling.document_converter import DocumentConverter
         return DocumentConverter().convert(str(path)).document.export_to_markdown()
     except ImportError:
-        if ext == ".pdf":
-            from pypdf import PdfReader
-            return "\n\n".join(p.extract_text() or "" for p in PdfReader(str(path)).pages)
-        raise RuntimeError(f"{ext} needs Docling (not installed in this venv)")
+        pass
+    # Docling kept in its own venv (torch is heavy; docs/APPLE_SILICON.md section 5): run it as a subprocess
+    if DOCLING_PY.exists():
+        return subprocess.run([str(DOCLING_PY), str(ROOT / "tools" / "docling_convert.py"), str(path)],
+                              capture_output=True, text=True, check=True).stdout
+    if ext == ".pdf":
+        from pypdf import PdfReader
+        return "\n\n".join(p.extract_text() or "" for p in PdfReader(str(path)).pages)
+    raise RuntimeError(f"{ext} needs Docling (not in this venv and no .venv-docling; see docs/APPLE_SILICON.md section 5)")
 
 
 FRONT = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.S)
@@ -107,7 +115,7 @@ def ingest_image(conn, path: Path) -> dict:
         conn.execute("INSERT INTO chunks(doc_id,chunk_no,text,embedding,meta) VALUES (%s,%s,%s,%s,%s)",
                      (doc_id, i, c, v, json.dumps({"doc": name, "version": 1, "superseded": False, "kind": "drawing",
                                                     "image": str(path), "vision_model": VISION_MODEL})))
-    return {"file": path.name, "doc": name, "kind": "drawing", "chunks": len(chunks), "vision_seconds": round(secs, 1),
+    return {"file": path.name, "doc": name, "kind": "drawing", "vision_model": VISION_MODEL, "chunks": len(chunks), "vision_seconds": round(secs, 1),
             "description_chars": len(text)}
 
 

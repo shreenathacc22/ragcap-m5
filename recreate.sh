@@ -8,8 +8,8 @@ step() { printf '\n=== %s\n' "$1"; }
 fail() { echo "FAIL: $1" >&2; exit 1; }
 
 step "pre-flight"
-docker info >/dev/null 2>&1 || fail "Docker Desktop not running (open -a Docker)"
-curl -sf localhost:11434/api/tags >/dev/null || fail "Ollama not running (open -a Ollama)"
+command -v ollama >/dev/null || fail "Ollama not installed (docs/APPLE_SILICON.md section 1)"
+curl -sf localhost:11434/api/tags >/dev/null || fail "Ollama not running (open -a Ollama, or: ollama serve &)"
 for m in llama3.2:3b nomic-embed-text; do ollama list | grep -q "^$m" || ollama pull "$m"; done
 
 step "2.1 database"
@@ -17,31 +17,26 @@ if [ ! -f .env ]; then
   PW=$(openssl rand -hex 12)
   printf 'PGHOST=localhost\nPGPORT=5433\nPGUSER=ragcap\nPGPASSWORD=%s\nPGDATABASE=ragcap\n' "$PW" > .env; chmod 600 .env
 fi
-PGPASSWORD=$(sed -n 's/^PGPASSWORD=//p' .env)
-if docker ps -a --format '{{.Names}}' | grep -qx ragcap-pg; then docker start ragcap-pg >/dev/null; sleep 3
-else
-  docker run -d --name ragcap-pg -e POSTGRES_USER=ragcap -e POSTGRES_PASSWORD="$PGPASSWORD" -e POSTGRES_DB=ragcap \
-    -p 127.0.0.1:5433:5432 -v ragcap_pgdata:/var/lib/postgresql/data --restart unless-stopped pgvector/pgvector:pg16 >/dev/null
-  sleep 8
-fi
-docker exec ragcap-pg pg_isready -q -U ragcap -d ragcap || fail "Postgres not ready"
-docker exec ragcap-pg psql -U ragcap -d ragcap -qc "CREATE EXTENSION IF NOT EXISTS vector;"
-echo "pgvector $(docker exec ragcap-pg psql -U ragcap -d ragcap -tAc "select extversion from pg_extension where extname='vector'")"
 
-step "2.2 python env + schema"
+step "2.2 python env, database, schema"
 if [ ! -x .venv/bin/python ]; then
-  PY=${PY:-$(command -v python3.12 || echo ../../mai-practitioner-labs/.venv/bin/python)}
+  PY=${PY:-$(command -v python3.12)} || fail "Python 3.12 not found: see docs/APPLE_SILICON.md section 1"
   "$PY" -m venv .venv
 fi
-.venv/bin/python --version | grep -q "3.12" || fail "venv is not Python 3.12: install it (brew install python@3.12) and run PY=$(command -v python3.12) ./recreate.sh; see docs/APPLE_SILICON.md"
-.venv/bin/pip install -q -r requirements.txt
+.venv/bin/python --version | grep -q "3.12" || fail "venv is not Python 3.12: install it and run PY=$(command -v python3.12) ./recreate.sh; see docs/APPLE_SILICON.md"
+.venv/bin/python -m pip install -q -r requirements.txt
+command -v docker >/dev/null && { docker info >/dev/null 2>&1 || fail "Docker installed but not running (open -a Docker), or force native Postgres: RAGCAP_PG=local ./recreate.sh"; }
+./pgctl.sh start
+./pgctl.sh ready || fail "Postgres not ready (./pgctl.sh status)"
+./pgctl.sh psql -qc "CREATE EXTENSION IF NOT EXISTS vector;"
+echo "postgres backend: ${RAGCAP_PG:-$(command -v docker >/dev/null && echo docker || echo local)}, pgvector $(./pgctl.sh psql -tAc "select extversion from pg_extension where extname='vector'")"
 .venv/bin/python step1_check.py | tail -1 | grep -q "STEP 1 OK" || fail "step1_check"
 
 step "2.3 ingest"
-docker exec ragcap-pg psql -U ragcap -d ragcap -qc "DELETE FROM documents"
+./pgctl.sh psql -qc "DELETE FROM documents"
 .venv/bin/python -m ragcap.ingest data/docs_versioned | wc -l | xargs echo "documents ingested:"
 .venv/bin/python -m ragcap.ingest data/tables
-COUNTS=$(docker exec ragcap-pg psql -U ragcap -d ragcap -tAc "select (select count(*) from documents)||' docs, '||(select count(*) from chunks)||' chunks, '||(select count(*) from documents where superseded)||' superseded, '||(select count(*) from uploaded_tables)||' tables'")
+COUNTS=$(./pgctl.sh psql -tAc "select (select count(*) from documents)||' docs, '||(select count(*) from chunks)||' chunks, '||(select count(*) from documents where superseded)||' superseded, '||(select count(*) from uploaded_tables)||' tables'")
 echo "$COUNTS"; [ "$COUNTS" = "16 docs, 16 chunks, 8 superseded, 1 tables" ] || fail "counts differ from the fingerprint"
 
 step "2.4 data checks"

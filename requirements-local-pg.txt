@@ -1,0 +1,2 @@
+# Native Postgres 16 + pgvector for pgctl.sh when Docker is not installed (no admin rights needed)
+pgserver>=0.1.4

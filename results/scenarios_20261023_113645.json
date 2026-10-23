@@ -1,0 +1,359 @@
+[
+ {
+  "id": "G1",
+  "question": "Thanks!",
+  "settings": {},
+  "expected_route": "general",
+  "route": "general",
+  "status": "PASS",
+  "path": [
+   "router",
+   "general"
+  ],
+  "total_ms": 343,
+  "answer": "You're welcome! How can I assist you today?",
+  "sql": null,
+  "shows": "general agent: no facts, 2 LLM calls",
+  "known": null
+ },
+ {
+  "id": "G2",
+  "question": "What is the largest message size our brokers accept?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "rewrite",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 2427,
+  "answer": "That information is not in the knowledge base.",
+  "sql": null,
+  "shows": "grade finds nothing, one rewrite, then an explicit refusal",
+  "known": null
+ },
+ {
+  "id": "D1",
+  "question": "At what consumer lag should operations raise an alert?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1571,
+  "answer": "According to the Kafka Consumer Lag Runbook, operations should raise an alert when the consumer group lag exceeds 5,000 messages sustained for 5 minutes.",
+  "sql": null,
+  "shows": "normal document flow with a citation",
+  "known": null
+ },
+ {
+  "id": "D2",
+  "question": "What port does BROKER-EAST-02 use for TLS traffic?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1454,
+  "answer": "The port used for TLS traffic by BROKER-EAST-02 is 9093.",
+  "sql": null,
+  "shows": "exact-string lookup (control case for the version filter)",
+  "known": null
+ },
+ {
+  "id": "D3",
+  "question": "What replication factor and what default retention apply to a new standard production topic?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "KNOWN FAIL",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1712,
+  "answer": "According to passage [1], the replication factor for a new standard production topic is 3. The default retention is not specified in the passage, but it is implied that the default retention is not relevant to the replication factor.",
+  "sql": null,
+  "shows": "multi-hop: two facts from two documents",
+  "known": "multi-hop: the per-passage grader keeps one of the two passages"
+ },
+ {
+  "id": "S1",
+  "question": "Which brokers are above 85% disk usage?",
+  "settings": {},
+  "expected_route": "database",
+  "route": "database",
+  "status": "PASS",
+  "path": [
+   "router",
+   "sql_agent",
+   "generate_sql"
+  ],
+  "total_ms": 1075,
+  "answer": "The brokers above 85% disk usage are:\n\n- Broker 3: 87.2% disk usage\n- Broker 5: 91.8% disk usage",
+  "sql": "SELECT broker_id, rack, disk_total_gb, disk_used_pct, topics, status FROM broker_inventory WHERE disk_used_pct > 85",
+  "shows": "SQL agent with a WHERE from the question",
+  "known": null
+ },
+ {
+  "id": "S2",
+  "question": "Which broker hosts the most topics, and how many?",
+  "settings": {},
+  "expected_route": "database",
+  "route": "database",
+  "status": "KNOWN FAIL",
+  "path": [
+   "router",
+   "sql_agent",
+   "generate_sql"
+  ],
+  "total_ms": 843,
+  "answer": "The broker with the most topics is broker_id 2, and it hosts 152 topics.",
+  "sql": "SELECT broker_id, topics FROM broker_inventory WHERE status = 'healthy' ORDER BY topics DESC LIMIT 1",
+  "shows": "ORDER BY ... LIMIT 1 for a single extreme",
+  "known": "SQL: the 3B model sometimes groups by rack (db-004)"
+ },
+ {
+  "id": "S3",
+  "question": "What is the total disk capacity across all brokers in GB?",
+  "settings": {},
+  "expected_route": "database",
+  "route": "database",
+  "status": "PASS",
+  "path": [
+   "router",
+   "sql_agent",
+   "generate_sql"
+  ],
+  "total_ms": 729,
+  "answer": "The total disk capacity across all brokers is 16,000 GB.",
+  "sql": "SELECT SUM(disk_total_gb) FROM broker_inventory",
+  "shows": "SUM, numbers copied exactly",
+  "known": null
+ },
+ {
+  "id": "S4",
+  "question": "Delete all rows from the broker_inventory table.",
+  "settings": {},
+  "expected_route": "database",
+  "route": "database",
+  "status": "PASS",
+  "path": [
+   "router",
+   "sql_agent",
+   "generate_sql"
+  ],
+  "total_ms": 583,
+  "answer": "I could not compute that from the tables (only a single read-only SELECT is allowed).",
+  "sql": "DELETE FROM broker_inventory",
+  "shows": "the model writes a DELETE; the validator rejects it and the table is unchanged",
+  "known": null
+ },
+ {
+  "id": "V1-OFF",
+  "question": "At what disk utilisation should a broker page?",
+  "settings": {
+   "VERSION_AWARE": "0"
+  },
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "OBSERVED",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1600,
+  "answer": "According to passage [1], a broker page should be triggered when the log-directory utilisation exceeds **75%**, with a warning at **60%**.",
+  "sql": null,
+  "shows": "the trap: with the filter off the retired 85% can come back (observed, not scored)",
+  "known": null
+ },
+ {
+  "id": "V1-ON",
+  "question": "At what disk utilisation should a broker page?",
+  "settings": {
+   "VERSION_AWARE": "1"
+  },
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1040,
+  "answer": "A broker page should be triggered when the disk utilisation exceeds 75%.",
+  "sql": null,
+  "shows": "the fix: superseded versions excluded before ranking",
+  "known": null
+ },
+ {
+  "id": "V2",
+  "question": "Which team owns escalation for a SEV-1 Kafka incident?",
+  "settings": {
+   "VERSION_AWARE": "1"
+  },
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1470,
+  "answer": "The team that owns escalation for a SEV-1 Kafka incident is the Streaming Platform team.",
+  "sql": null,
+  "shows": "a version conflict with no number in it",
+  "known": null
+ },
+ {
+  "id": "R1",
+  "question": "What is the highest disk usage percentage and which broker has it?",
+  "settings": {},
+  "expected_route": "database",
+  "route": "database",
+  "status": "PASS",
+  "path": [
+   "router",
+   "sql_agent",
+   "generate_sql"
+  ],
+  "total_ms": 954,
+  "answer": "The highest disk usage percentage is 91.8% and it belongs to broker 5. This information was computed from the broker_inventory table.",
+  "sql": "SELECT broker_id, disk_used_pct FROM broker_inventory ORDER BY disk_used_pct DESC LIMIT 1",
+  "shows": "router ambiguity: a rule in a runbook vs a measurement in the table",
+  "known": null
+ },
+ {
+  "id": "R2",
+  "question": "How many minutes must consumer lag stay high before the alert fires?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "KNOWN FAIL",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "rewrite",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 2216,
+  "answer": "That information is not in the knowledge base.",
+  "sql": null,
+  "shows": "lean profile: the 3B grader rejects a differently phrased passage",
+  "known": "grader: needs the second-opinion grader (R2+)"
+ },
+ {
+  "id": "R2+",
+  "question": "How many minutes must consumer lag stay high before the alert fires?",
+  "settings": {
+   "GRADE_MODEL": "qwen3:8b",
+   "GRADE_MODE": "escalate",
+   "GRADE_MAX_TOKENS": "600"
+  },
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 6935,
+  "answer": "The alert fires when the consumer group lag exceeds 5,000 messages sustained for 5 minutes.",
+  "sql": null,
+  "shows": "recommended profile: qwen3:8b second opinion keeps the passage",
+  "known": null
+ },
+ {
+  "id": "U1",
+  "question": "Which cloud provider hosts the Kafka cluster?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "PASS",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "rewrite",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 2466,
+  "answer": "That information is not in the knowledge base.",
+  "sql": null,
+  "shows": "unanswerable: refused, not guessed",
+  "known": null
+ },
+ {
+  "id": "M1",
+  "question": "Which valve isolates the suction of pump P-101?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "KNOWN FAIL",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 955,
+  "answer": "It is not in the knowledge base.",
+  "sql": null,
+  "shows": "a drawing answered through its vision description",
+  "known": "P&ID relations: the answer step does not infer 'suction side'"
+ },
+ {
+  "id": "M2",
+  "question": "Which instrument controls the flow into tank T-102, and through which valve?",
+  "settings": {},
+  "expected_route": "documents",
+  "route": "documents",
+  "status": "KNOWN FAIL",
+  "path": [
+   "router",
+   "retrieve",
+   "grade",
+   "rewrite",
+   "retrieve",
+   "grade",
+   "generate"
+  ],
+  "total_ms": 1380,
+  "answer": "Not in the knowledge base.",
+  "sql": null,
+  "shows": "the hardest tag family for a 3B vision model",
+  "known": "P&ID relations: the answer step does not chain controller and valve"
+ }
+]

@@ -1,5 +1,6 @@
 {
-"generated": "2026-10-19",
+"generated": "2026-10-23",
+"machine": "Apple M5 Pro",
 "model": "llama3.2:3b (vision: qwen2.5vl:3b)",
 "runs": [
 {
@@ -11,23 +12,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2379
+"ms": 288
 },
 {
 "node": "retrieve",
-"ms": 169
+"ms": 45
 },
 {
 "node": "grade",
-"ms": 14283
+"ms": 688
 },
 {
 "node": "generate",
-"ms": 5046
+"ms": 299
 }
 ],
-"total_ms": 21885,
-"answer": "According to passage [1], operations should raise an alert when the Kafka consumer group lag exceeds 5,000 messages sustained for 5 minutes.",
+"total_ms": 1322,
+"answer": "According to the Kafka Consumer Lag Runbook, operations should raise an alert when the consumer group lag exceeds 5,000 messages sustained for 5 minutes.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -56,22 +57,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2303
+"ms": 246
 },
 {
 "node": "retrieve",
-"ms": 69
+"ms": 15
 },
 {
 "node": "grade",
-"ms": 16229
+"ms": 880
 },
 {
 "node": "generate",
-"ms": 4433
+"ms": 347
 }
 ],
-"total_ms": 23039,
+"total_ms": 1490,
 "answer": "Standard topics retain messages for 72 hours (3 days) by default.",
 "sql": null,
 "ok": true,
@@ -101,22 +102,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2637
+"ms": 730
 },
 {
 "node": "retrieve",
-"ms": 99
+"ms": 32
 },
 {
 "node": "grade",
-"ms": 7711
+"ms": 1849
 },
 {
 "node": "generate",
-"ms": 6130
+"ms": 1049
 }
 ],
-"total_ms": 16581,
+"total_ms": 3662,
 "answer": "According to the passage [1], the order in which a broker should be drained and stopped during a patch is:\n\n1. Drain partition leadership away from the broker.\n2. Verify no partitions list this broker as leader.\n3. Stop the broker process.\n4. Apply the patch.\n5. Start the broker and wait for ISR to catch up.",
 "sql": null,
 "ok": true,
@@ -146,23 +147,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 1974
+"ms": 377
 },
 {
 "node": "retrieve",
-"ms": 68
+"ms": 20
 },
 {
 "node": "grade",
-"ms": 9519
+"ms": 1326
 },
 {
 "node": "generate",
-"ms": 2248
+"ms": 441
 }
 ],
-"total_ms": 13812,
-"answer": "[1] (Kafka TLS Certificate Rotation)\n\nThe host that issues broker TLS certificates is `pki.internal.example.com`.",
+"total_ms": 2166,
+"answer": "[1] (Kafka TLS Certificate Rotation) states that the host `pki.internal.example.com` issues broker TLS certificates.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -191,22 +192,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2496
+"ms": 528
 },
 {
 "node": "retrieve",
-"ms": 81
+"ms": 26
 },
 {
 "node": "grade",
-"ms": 11532
+"ms": 1566
 },
 {
 "node": "generate",
-"ms": 1720
+"ms": 307
 }
 ],
-"total_ms": 15832,
+"total_ms": 2429,
 "answer": "The team that owns escalation for a SEV-1 Kafka incident is the Streaming Platform team.",
 "sql": null,
 "ok": true,
@@ -236,22 +237,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2025
+"ms": 345
 },
 {
 "node": "retrieve",
-"ms": 67
+"ms": 19
 },
 {
 "node": "grade",
-"ms": 10386
+"ms": 1410
 },
 {
 "node": "generate",
-"ms": 2286
+"ms": 888
 }
 ],
-"total_ms": 14768,
+"total_ms": 2664,
 "answer": "The prefix for a new event topic should be `event.` followed by domain and entity, for example `event.orders.created`.",
 "sql": null,
 "ok": true,
@@ -281,22 +282,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2148
+"ms": 866
 },
 {
 "node": "retrieve",
-"ms": 74
+"ms": 57
 },
 {
 "node": "grade",
-"ms": 9689
+"ms": 1743
 },
 {
 "node": "generate",
-"ms": 1458
+"ms": 568
 }
 ],
-"total_ms": 13373,
+"total_ms": 3239,
 "answer": "A broker page should be triggered when the disk utilisation exceeds 75%.",
 "sql": null,
 "ok": true,
@@ -326,22 +327,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2226
+"ms": 860
 },
 {
 "node": "retrieve",
-"ms": 70
+"ms": 54
 },
 {
 "node": "grade",
-"ms": 9744
+"ms": 3062
 },
 {
 "node": "generate",
-"ms": 1272
+"ms": 497
 }
 ],
-"total_ms": 13316,
+"total_ms": 4478,
 "answer": "[1] recommends a replication factor of 3 for production topics.",
 "sql": null,
 "ok": true,
@@ -359,7 +360,7 @@
 "Kafka Retention Policy v2",
 "Kafka Disk Utilisation Alerting v2",
 "Kafka Broker Restart Procedure v2",
-"Kafka TLS Certificate Rotation v2"
+"Kafka Consumer Lag Runbook v2"
 ]
 },
 {
@@ -371,22 +372,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2430
+"ms": 1087
 },
 {
 "node": "retrieve",
-"ms": 69
+"ms": 55
 },
 {
 "node": "grade",
-"ms": 9035
+"ms": 2460
 },
 {
 "node": "generate",
-"ms": 4386
+"ms": 631
 }
 ],
-"total_ms": 15923,
+"total_ms": 4238,
 "answer": "The port used for TLS traffic by BROKER-EAST-02 is 9093.",
 "sql": null,
 "ok": true,
@@ -416,22 +417,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2311
+"ms": 891
 },
 {
 "node": "retrieve",
-"ms": 74
+"ms": 55
 },
 {
 "node": "grade",
-"ms": 13626
+"ms": 2468
 },
 {
 "node": "generate",
-"ms": 11124
+"ms": 2127
 }
 ],
-"total_ms": 27138,
+"total_ms": 5545,
 "answer": "The cluster ID of the production Kafka cluster is `kfk-east-7731`.",
 "sql": null,
 "ok": true,
@@ -461,25 +462,25 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2421
+"ms": 1079
 },
 {
 "node": "retrieve",
-"ms": 102
+"ms": 64
 },
 {
 "node": "grade",
-"ms": 11109
+"ms": 2876
 },
 {
 "node": "generate",
-"ms": 5023
+"ms": 1143
 }
 ],
-"total_ms": 18658,
-"answer": "It is not in the knowledge base. The passage does not mention which PagerDuty service covers the Kafka on-call rota.",
+"total_ms": 5168,
+"answer": "The PagerDuty service that covers the Kafka on-call rota is PD-KAFKA-OPS.",
 "sql": null,
-"ok": false,
+"ok": true,
 "retrieved_off": [
 "Kafka Incident Escalation Path v1 OLD",
 "Kafka Incident Escalation Path v2",
@@ -506,22 +507,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2908
+"ms": 1066
 },
 {
 "node": "retrieve",
-"ms": 71
+"ms": 56
 },
 {
 "node": "grade",
-"ms": 13046
+"ms": 2881
 },
 {
 "node": "generate",
-"ms": 14742
+"ms": 2789
 }
 ],
-"total_ms": 30770,
+"total_ms": 6797,
 "answer": "The metrics endpoint for BROKER-EAST-02 is `http://BROKER-EAST-02:7071/metrics`.",
 "sql": null,
 "ok": true,
@@ -551,22 +552,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 3313
+"ms": 892
 },
 {
 "node": "retrieve",
-"ms": 72
+"ms": 57
 },
 {
 "node": "grade",
-"ms": 11080
+"ms": 2143
 },
 {
 "node": "generate",
-"ms": 11629
+"ms": 394
 }
 ],
-"total_ms": 26098,
+"total_ms": 3490,
 "answer": "The name of the production Kafka cluster is `kafka-prod-east`.",
 "sql": null,
 "ok": true,
@@ -596,22 +597,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2722
+"ms": 321
 },
 {
 "node": "retrieve",
-"ms": 81
+"ms": 15
 },
 {
 "node": "grade",
-"ms": 9390
+"ms": 605
 },
 {
 "node": "generate",
-"ms": 1841
+"ms": 206
 }
 ],
-"total_ms": 14038,
+"total_ms": 1147,
 "answer": "The port used by BROKER-EAST-02 for PLAINTEXT traffic is 9092.",
 "sql": null,
 "ok": true,
@@ -641,22 +642,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 4456
+"ms": 459
 },
 {
 "node": "retrieve",
-"ms": 175
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 9476
+"ms": 600
 },
 {
 "node": "generate",
-"ms": 6356
+"ms": 704
 }
 ],
-"total_ms": 20466,
+"total_ms": 1781,
 "answer": "According to passage [1], a broker will page when its log-directory utilisation exceeds 75%. \n\nAs for how long standard topics are retained if you need to reduce retention to recover space, the passage does not provide a specific percentage or duration. It only mentions that reducing retention on the largest topic is an action to take when the broker's log-directory utilisation exceeds 75%.",
 "sql": null,
 "ok": false,
@@ -686,23 +687,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 4923
+"ms": 455
 },
 {
 "node": "retrieve",
-"ms": 159
+"ms": 17
 },
 {
 "node": "grade",
-"ms": 10228
+"ms": 587
 },
 {
 "node": "generate",
-"ms": 7900
+"ms": 555
 }
 ],
-"total_ms": 23212,
-"answer": "According to passage [1], to escalate a SEV-1 on BROKER-EAST-02, you should page the **Streaming Platform team**.\n\nAdditionally, the passage states that the broker listens on port 9093 for TLS traffic, so you should check port 9093 for TLS health.",
+"total_ms": 1614,
+"answer": "According to passage [1], to escalate a SEV-1 on BROKER-EAST-02, you should page the **Streaming Platform team**.\n\nAdditionally, to check for TLS health, you should check port 9093.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -731,18 +732,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2130
+"ms": 239
 },
 {
 "node": "sql_agent",
-"ms": 5253
+"ms": 398
 },
 {
 "node": "generate_sql",
-"ms": 4672
+"ms": 365
 }
 ],
-"total_ms": 12059,
+"total_ms": 1003,
 "answer": "The brokers above 85% disk usage are:\n\n- Broker 3: 87.2% disk usage\n- Broker 5: 91.8% disk usage",
 "sql": "SELECT broker_id, rack, disk_total_gb, disk_used_pct, topics, status FROM broker_inventory WHERE disk_used_pct > 85",
 "ok": true,
@@ -758,18 +759,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2114
+"ms": 213
 },
 {
 "node": "sql_agent",
-"ms": 3821
+"ms": 276
 },
 {
 "node": "generate_sql",
-"ms": 2137
+"ms": 204
 }
 ],
-"total_ms": 8075,
+"total_ms": 695,
 "answer": "There are 2 brokers in rack-b. This was computed from the broker_inventory table.",
 "sql": "SELECT COUNT(*) FROM broker_inventory WHERE rack = 'rack-b'",
 "ok": true,
@@ -785,18 +786,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2396
+"ms": 273
 },
 {
 "node": "sql_agent",
-"ms": 3303
+"ms": 249
 },
 {
 "node": "generate_sql",
-"ms": 2989
+"ms": 171
 }
 ],
-"total_ms": 8690,
+"total_ms": 694,
 "answer": "The total disk capacity across all brokers is 16,000 GB.",
 "sql": "SELECT SUM(disk_total_gb) FROM broker_inventory",
 "ok": true,
@@ -812,20 +813,20 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2192
+"ms": 241
 },
 {
 "node": "sql_agent",
-"ms": 4099
+"ms": 345
 },
 {
 "node": "generate_sql",
-"ms": 2454
+"ms": 215
 }
 ],
-"total_ms": 8748,
-"answer": "The broker that hosts the most topics is 'rack-a', and it hosts 2 topics.",
-"sql": "SELECT rack, COUNT(*) AS num_topics FROM broker_inventory GROUP BY rack ORDER BY num_topics DESC LIMIT 1",
+"total_ms": 802,
+"answer": "The broker with the most topics is broker_id 2, and it hosts 152 topics.",
+"sql": "SELECT broker_id, topics FROM broker_inventory WHERE status = 'healthy' ORDER BY topics DESC LIMIT 1",
 "ok": false,
 "retrieved_off": null,
 "retrieved_on": null
@@ -839,18 +840,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2536
+"ms": 232
 },
 {
 "node": "sql_agent",
-"ms": 3374
+"ms": 252
 },
 {
 "node": "generate_sql",
-"ms": 2657
+"ms": 250
 }
 ],
-"total_ms": 8571,
+"total_ms": 734,
 "answer": "The average disk used percentage across brokers is 69.37%. This was computed from the table 'broker_inventory'.",
 "sql": "SELECT AVG(disk_used_pct) FROM broker_inventory",
 "ok": true,
@@ -866,18 +867,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 1983
+"ms": 204
 },
 {
 "node": "sql_agent",
-"ms": 3688
+"ms": 266
 },
 {
 "node": "generate_sql",
-"ms": 2227
+"ms": 213
 }
 ],
-"total_ms": 7902,
+"total_ms": 685,
 "answer": "There are 4 brokers with a healthy status. This was computed from the broker_inventory table.",
 "sql": "SELECT COUNT(*) FROM broker_inventory WHERE status = 'healthy'",
 "ok": true,
@@ -893,14 +894,14 @@
 "nodes": [
 {
 "node": "router",
-"ms": 1646
+"ms": 152
 },
 {
 "node": "general",
-"ms": 2113
+"ms": 219
 }
 ],
-"total_ms": 3762,
+"total_ms": 372,
 "answer": "Hello! I'm here to assist you with any documents or data you need. How can I help you today?",
 "sql": null,
 "ok": true,
@@ -916,14 +917,14 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2183
+"ms": 199
 },
 {
 "node": "general",
-"ms": 1491
+"ms": 149
 }
 ],
-"total_ms": 3676,
+"total_ms": 349,
 "answer": "You're welcome. Is there anything else I can assist you with?",
 "sql": null,
 "ok": true,
@@ -939,14 +940,14 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2156
+"ms": 205
 },
 {
 "node": "general",
-"ms": 3560
+"ms": 353
 }
 ],
-"total_ms": 5719,
+"total_ms": 559,
 "answer": "I can assist with document-related tasks, data organization, and information retrieval. I can help with tasks such as summarizing documents, extracting key points, and providing context to specific information.",
 "sql": null,
 "ok": true,
@@ -962,34 +963,34 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2362
+"ms": 231
 },
 {
 "node": "retrieve",
-"ms": 73
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 11464
+"ms": 679
 },
 {
 "node": "rewrite",
-"ms": 3870
+"ms": 423
 },
 {
 "node": "retrieve",
-"ms": 69
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 13981
+"ms": 683
 },
 {
 "node": "generate",
 "ms": 0
 }
 ],
-"total_ms": 31826,
+"total_ms": 2046,
 "answer": "That information is not in the knowledge base.",
 "sql": null,
 "ok": true,
@@ -1005,34 +1006,34 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2379
+"ms": 221
 },
 {
 "node": "retrieve",
-"ms": 72
+"ms": 13
 },
 {
 "node": "grade",
-"ms": 16928
+"ms": 679
 },
 {
 "node": "rewrite",
-"ms": 1049
+"ms": 114
 },
 {
 "node": "retrieve",
-"ms": 92
+"ms": 13
 },
 {
 "node": "grade",
-"ms": 13673
+"ms": 680
 },
 {
 "node": "generate",
 "ms": 0
 }
 ],
-"total_ms": 34206,
+"total_ms": 1722,
 "answer": "That information is not in the knowledge base.",
 "sql": null,
 "ok": true,
@@ -1048,37 +1049,37 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2761
+"ms": 268
 },
 {
 "node": "retrieve",
-"ms": 162
+"ms": 49
 },
 {
 "node": "grade",
-"ms": 5476
+"ms": 856
 },
 {
 "node": "rewrite",
-"ms": 3684
+"ms": 405
 },
 {
 "node": "retrieve",
-"ms": 74
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 3475
+"ms": 845
 },
 {
 "node": "generate",
-"ms": 1008
+"ms": 0
 }
 ],
-"total_ms": 16650,
-"answer": "The TLS certificate validity period is 90 days.",
+"total_ms": 2441,
+"answer": "That information is not in the knowledge base.",
 "sql": null,
-"ok": true,
+"ok": false,
 "retrieved_off": [
 "Kafka TLS Certificate Rotation v1 OLD",
 "Kafka TLS Certificate Rotation v2",
@@ -1105,22 +1106,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2496
+"ms": 272
 },
 {
 "node": "retrieve",
-"ms": 72
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 16723
+"ms": 853
 },
 {
 "node": "generate",
-"ms": 4571
+"ms": 242
 }
 ],
-"total_ms": 23866,
+"total_ms": 1384,
 "answer": "The min.insync.replicas value that goes with production topics is 2.",
 "sql": null,
 "ok": true,
@@ -1138,7 +1139,7 @@
 "Kafka Retention Policy v2",
 "Kafka Consumer Lag Runbook v2",
 "Kafka Broker Restart Procedure v2",
-"Kafka TLS Certificate Rotation v2"
+"Kafka Disk Utilisation Alerting v2"
 ]
 },
 {
@@ -1150,22 +1151,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 3139
+"ms": 294
 },
 {
 "node": "retrieve",
-"ms": 85
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 17498
+"ms": 853
 },
 {
 "node": "generate",
-"ms": 18013
+"ms": 316
 }
 ],
-"total_ms": 38738,
+"total_ms": 1480,
 "answer": "According to passage [1], topic names must use lowercase with dots as separators, and hyphens are not permitted.",
 "sql": null,
 "ok": true,
@@ -1195,34 +1196,34 @@
 "nodes": [
 {
 "node": "router",
-"ms": 3077
+"ms": 228
 },
 {
 "node": "retrieve",
-"ms": 124
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17344
+"ms": 858
 },
 {
 "node": "rewrite",
-"ms": 3968
+"ms": 546
 },
 {
 "node": "retrieve",
-"ms": 65
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 16308
+"ms": 848
 },
 {
 "node": "generate",
-"ms": 3782
+"ms": 207
 }
 ],
-"total_ms": 44674,
+"total_ms": 2717,
 "answer": "The message retention period for audit topics is 90 days.",
 "sql": null,
 "ok": true,
@@ -1252,34 +1253,34 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2403
+"ms": 280
 },
 {
 "node": "retrieve",
-"ms": 76
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 16167
+"ms": 848
 },
 {
 "node": "rewrite",
-"ms": 2430
+"ms": 163
 },
 {
 "node": "retrieve",
-"ms": 68
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 16522
+"ms": 854
 },
 {
 "node": "generate",
 "ms": 0
 }
 ],
-"total_ms": 37671,
+"total_ms": 2176,
 "answer": "That information is not in the knowledge base.",
 "sql": null,
 "ok": false,
@@ -1309,35 +1310,35 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2293
+"ms": 245
 },
 {
 "node": "retrieve",
-"ms": 78
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17267
+"ms": 854
 },
 {
 "node": "rewrite",
-"ms": 5571
+"ms": 405
 },
 {
 "node": "retrieve",
-"ms": 108
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 16044
+"ms": 842
 },
 {
 "node": "generate",
-"ms": 3982
+"ms": 226
 }
 ],
-"total_ms": 45349,
-"answer": "The expected total downtime for a broker restart is 4 minutes.",
+"total_ms": 2604,
+"answer": "The expected total downtime for a Kafka broker restart is 4 minutes.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -1366,22 +1367,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2720
+"ms": 293
 },
 {
 "node": "retrieve",
-"ms": 76
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 16294
+"ms": 853
 },
 {
 "node": "generate",
-"ms": 4332
+"ms": 254
 }
 ],
-"total_ms": 23426,
+"total_ms": 1417,
 "answer": "The secondary contact for a SEV-1 Kafka incident is the Infrastructure duty manager.",
 "sql": null,
 "ok": true,
@@ -1411,37 +1412,25 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2877
+"ms": 294
 },
 {
 "node": "retrieve",
-"ms": 81
+"ms": 17
 },
 {
 "node": "grade",
-"ms": 17438
-},
-{
-"node": "rewrite",
-"ms": 4724
-},
-{
-"node": "retrieve",
-"ms": 70
-},
-{
-"node": "grade",
-"ms": 16763
+"ms": 853
 },
 {
 "node": "generate",
-"ms": 0
+"ms": 326
 }
 ],
-"total_ms": 41958,
-"answer": "That information is not in the knowledge base.",
+"total_ms": 1491,
+"answer": "According to passage [1], a SEV-1 Kafka incident must be escalated if not mitigated within 15 minutes.",
 "sql": null,
-"ok": false,
+"ok": true,
 "retrieved_off": [
 "Kafka Incident Escalation Path v1 OLD",
 "Kafka Incident Escalation Path v2",
@@ -1468,23 +1457,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2185
+"ms": 229
 },
 {
 "node": "retrieve",
-"ms": 64
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17076
+"ms": 850
 },
 {
 "node": "generate",
-"ms": 4683
+"ms": 334
 }
 ],
-"total_ms": 24012,
-"answer": "The template to request for broker certificates is the `kafka-broker-v2` template.",
+"total_ms": 1427,
+"answer": "[1] (Kafka TLS Certificate Rotation)\n\nThe template to request for broker certificates is `kafka-broker-v2`.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -1513,22 +1502,22 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2358
+"ms": 248
 },
 {
 "node": "retrieve",
-"ms": 72
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17044
+"ms": 864
 },
 {
 "node": "generate",
-"ms": 5659
+"ms": 369
 }
 ],
-"total_ms": 25137,
+"total_ms": 1496,
 "answer": "No, you do not need a full-cluster window to rotate certificates. According to passage [1], rotation can be done \"one at a time\".",
 "sql": null,
 "ok": true,
@@ -1558,35 +1547,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2402
+"ms": 276
 },
 {
 "node": "retrieve",
-"ms": 80
+"ms": 15
 },
 {
 "node": "grade",
-"ms": 17027
-},
-{
-"node": "rewrite",
-"ms": 3885
-},
-{
-"node": "retrieve",
-"ms": 105
-},
-{
-"node": "grade",
-"ms": 16888
+"ms": 850
 },
 {
 "node": "generate",
-"ms": 5373
+"ms": 279
 }
 ],
-"total_ms": 45766,
-"answer": "The disk warning threshold paging for Kafka is as follows:\n\n* Page when broker log-directory utilisation exceeds 75%.\n* Warn at 60%.",
+"total_ms": 1422,
+"answer": "According to passage [1], we only warn instead of paging when the disk utilization exceeds 60%.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -1615,23 +1592,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2651
+"ms": 297
 },
 {
 "node": "retrieve",
-"ms": 72
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17493
+"ms": 854
 },
 {
 "node": "generate",
-"ms": 7974
+"ms": 263
 }
 ],
-"total_ms": 28193,
-"answer": "According to passage [1], Broker `BROKER-EAST-02` listens on port 9092 for plaintext traffic.",
+"total_ms": 1429,
+"answer": "The port used by BROKER-EAST-02 for plaintext traffic is 9092.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -1660,25 +1637,37 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2456
+"ms": 279
 },
 {
 "node": "retrieve",
-"ms": 74
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17285
+"ms": 855
+},
+{
+"node": "rewrite",
+"ms": 182
+},
+{
+"node": "retrieve",
+"ms": 16
+},
+{
+"node": "grade",
+"ms": 852
 },
 {
 "node": "generate",
-"ms": 5065
+"ms": 0
 }
 ],
-"total_ms": 24883,
-"answer": "[1] states that new topics using the retired `evt.` prefix will be rejected by the topic-admission check.",
+"total_ms": 2199,
+"answer": "That information is not in the knowledge base.",
 "sql": null,
-"ok": true,
+"ok": false,
 "retrieved_off": [
 "Kafka Topic Naming Standard v2",
 "Kafka Topic Naming Standard v1 OLD",
@@ -1705,25 +1694,37 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2831
+"ms": 291
 },
 {
 "node": "retrieve",
-"ms": 86
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 17688
+"ms": 853
+},
+{
+"node": "rewrite",
+"ms": 341
+},
+{
+"node": "retrieve",
+"ms": 13
+},
+{
+"node": "grade",
+"ms": 855
 },
 {
 "node": "generate",
-"ms": 6627
+"ms": 0
 }
 ],
-"total_ms": 27236,
-"answer": "It appears that the recommended course of action is to scale the consumer group by one instance and re-measure after 5 minutes. If the lag is still climbing, escalate before adding a second instance.",
+"total_ms": 2371,
+"answer": "That information is not in the knowledge base.",
 "sql": null,
-"ok": true,
+"ok": false,
 "retrieved_off": [
 "Kafka Consumer Lag Runbook v2",
 "Kafka Consumer Lag Runbook v1 OLD",
@@ -1750,35 +1751,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2745
+"ms": 298
 },
 {
 "node": "retrieve",
-"ms": 73
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 16876
-},
-{
-"node": "rewrite",
-"ms": 1609
-},
-{
-"node": "retrieve",
-"ms": 76
-},
-{
-"node": "grade",
-"ms": 21424
+"ms": 856
 },
 {
 "node": "generate",
-"ms": 0
+"ms": 497
 }
 ],
-"total_ms": 42810,
-"answer": "That information is not in the knowledge base.",
+"total_ms": 1669,
+"answer": "According to passage [1], the replication factor for a new standard production topic is 3. The default retention is not specified in the passage, but it is implied that the default retention is not relevant to the replication factor.",
 "sql": null,
 "ok": false,
 "retrieved_off": [
@@ -1807,23 +1796,23 @@
 "nodes": [
 {
 "node": "router",
-"ms": 3180
+"ms": 346
 },
 {
 "node": "retrieve",
-"ms": 93
+"ms": 16
 },
 {
 "node": "grade",
-"ms": 38697
+"ms": 856
 },
 {
 "node": "generate",
-"ms": 18341
+"ms": 626
 }
 ],
-"total_ms": 60337,
-"answer": "The host that issues TLS certificates is `pki.internal.example.com`, and the port that BROKER-EAST-02 uses for TLS is 9093.",
+"total_ms": 1844,
+"answer": "The host that issues TLS certificates is `pki.internal.example.com`. \n\nThe port that BROKER-EAST-02 uses for TLS is 9093.",
 "sql": null,
 "ok": true,
 "retrieved_off": [
@@ -1848,29 +1837,25 @@
 "set": "held-out set",
 "type": "sql",
 "question": "What is the highest disk usage percentage and which broker has it?",
-"route": "documents",
+"route": "database",
 "nodes": [
 {
 "node": "router",
-"ms": 2814
+"ms": 297
 },
 {
-"node": "retrieve",
-"ms": 102
+"node": "sql_agent",
+"ms": 333
 },
 {
-"node": "grade",
-"ms": 17595
-},
-{
-"node": "generate",
-"ms": 4797
+"node": "generate_sql",
+"ms": 305
 }
 ],
-"total_ms": 25317,
-"answer": "The highest disk usage percentage is 75%, and the broker with this high usage is BROKER-EAST-02.",
-"sql": null,
-"ok": false,
+"total_ms": 937,
+"answer": "The highest disk usage percentage is 91.8% and it belongs to broker 5. This information was computed from the broker_inventory table.",
+"sql": "SELECT broker_id, disk_used_pct FROM broker_inventory ORDER BY disk_used_pct DESC LIMIT 1",
+"ok": true,
 "retrieved_off": null,
 "retrieved_on": null
 },
@@ -1883,18 +1868,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2172
+"ms": 234
 },
 {
 "node": "sql_agent",
-"ms": 3256
+"ms": 258
 },
 {
 "node": "generate_sql",
-"ms": 2671
+"ms": 240
 }
 ],
-"total_ms": 8111,
+"total_ms": 733,
 "answer": "There are 3 brokers that host more than 150 topics. This was computed from the broker_inventory table.",
 "sql": "SELECT COUNT(*) FROM broker_inventory WHERE topics > 150",
 "ok": true,
@@ -1910,18 +1895,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 1934
+"ms": 205
 },
 {
 "node": "sql_agent",
-"ms": 3603
+"ms": 295
 },
 {
 "node": "generate_sql",
-"ms": 10746
+"ms": 1114
 }
 ],
-"total_ms": 16287,
+"total_ms": 1614,
 "answer": "Here are the brokers in rack-c:\n\n1. Broker 5: \n   - Broker ID: 5\n   - Rack: rack-c\n   - Disk Total GB: 4000\n   - Disk Used Pct: 91.8\n   - Topics: 210\n   - Status: critical\n\n2. Broker 6: \n   - Broker ID: 6\n   - Rack: rack-c\n   - Disk Total GB: 2000\n   - Disk Used Pct: 58.4\n   - Topics: 120\n   - Status: healthy",
 "sql": "SELECT * FROM broker_inventory WHERE rack = 'rack-c' ORDER BY status",
 "ok": true,
@@ -1937,18 +1922,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2185
+"ms": 244
 },
 {
 "node": "sql_agent",
-"ms": 2990
+"ms": 231
 },
 {
 "node": "generate_sql",
-"ms": 2159
+"ms": 159
 }
 ],
-"total_ms": 7338,
+"total_ms": 635,
 "answer": "The combined number of topics across all brokers is 880.",
 "sql": "SELECT SUM(topics) FROM broker_inventory",
 "ok": true,
@@ -1964,18 +1949,18 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2457
+"ms": 279
 },
 {
 "node": "sql_agent",
-"ms": 3872
+"ms": 284
 },
 {
 "node": "generate_sql",
-"ms": 2848
+"ms": 257
 }
 ],
-"total_ms": 9180,
+"total_ms": 821,
 "answer": "There are 2 brokers with at least 4000 GB of disk. This was computed from the broker_inventory table.",
 "sql": "SELECT COUNT(*) FROM broker_inventory WHERE disk_total_gb >= 4000",
 "ok": true,
@@ -1991,14 +1976,14 @@
 "nodes": [
 {
 "node": "router",
-"ms": 1797
+"ms": 161
 },
 {
 "node": "general",
-"ms": 1785
+"ms": 170
 }
 ],
-"total_ms": 3585,
+"total_ms": 331,
 "answer": "Good morning! I'm here to assist you. How can I help you today?",
 "sql": null,
 "ok": true,
@@ -2014,14 +1999,14 @@
 "nodes": [
 {
 "node": "router",
-"ms": 1732
+"ms": 177
 },
 {
 "node": "general",
-"ms": 1834
+"ms": 184
 }
 ],
-"total_ms": 3568,
+"total_ms": 361,
 "answer": "I'm a document and data assistant, here to help answer your questions and provide information.",
 "sql": null,
 "ok": true,
@@ -2037,34 +2022,34 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2353
+"ms": 224
 },
 {
 "node": "retrieve",
-"ms": 100
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17198
+"ms": 854
 },
 {
 "node": "rewrite",
-"ms": 10471
+"ms": 530
 },
 {
 "node": "retrieve",
-"ms": 99
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 17346
+"ms": 852
 },
 {
 "node": "generate",
 "ms": 0
 }
 ],
-"total_ms": 47573,
+"total_ms": 2490,
 "answer": "That information is not in the knowledge base.",
 "sql": null,
 "ok": true,
@@ -2080,34 +2065,34 @@
 "nodes": [
 {
 "node": "router",
-"ms": 2004
+"ms": 216
 },
 {
 "node": "retrieve",
-"ms": 96
+"ms": 13
 },
 {
 "node": "grade",
-"ms": 16776
+"ms": 851
 },
 {
 "node": "rewrite",
-"ms": 3123
+"ms": 293
 },
 {
 "node": "retrieve",
-"ms": 97
+"ms": 14
 },
 {
 "node": "grade",
-"ms": 16382
+"ms": 852
 },
 {
 "node": "generate",
 "ms": 0
 }
 ],
-"total_ms": 38483,
+"total_ms": 2241,
 "answer": "That information is not in the knowledge base.",
 "sql": null,
 "ok": true,
@@ -2121,10 +2106,10 @@
 "question": "Which valve isolates the suction of pump P-101?",
 "route": "documents",
 "nodes": [],
-"total_ms": 36222,
-"answer": "The valve that isolates the suction of pump P-101 is HV-101.",
+"total_ms": 1083,
+"answer": "It is not in the knowledge base.",
 "sql": null,
-"ok": true,
+"ok": false,
 "retrieved_off": null,
 "retrieved_on": null
 },
@@ -2135,10 +2120,10 @@
 "question": "Which instrument controls the flow into tank T-102, and through which valve?",
 "route": "documents",
 "nodes": [],
-"total_ms": 35621,
-"answer": "According to passage [1] (PID-001), the instrument that controls the flow is FIC-101: FIC flow indicating controller, and it controls flow through FCV-101: FCV flow control valve.\n\nHowever, passage [2] (PID-003) provides more specific information. According to passage [2], the instrument that contro",
+"total_ms": 1743,
+"answer": "Not in the knowledge base.",
 "sql": null,
-"ok": true,
+"ok": false,
 "retrieved_off": null,
 "retrieved_on": null
 },
@@ -2149,7 +2134,7 @@
 "question": "What does LT-101 measure, and on which equipment?",
 "route": "documents",
 "nodes": [],
-"total_ms": 33908,
+"total_ms": 914,
 "answer": "The LT-101 measures level.",
 "sql": null,
 "ok": true,
@@ -2163,8 +2148,8 @@
 "question": "Which drawing shows heat exchanger E-101, and what unit is it?",
 "route": "documents",
 "nodes": [],
-"total_ms": 30410,
-"answer": "It is not in the knowledge base.",
+"total_ms": 1104,
+"answer": "The drawing that shows heat exchanger E-101 is P&ID-001.",
 "sql": null,
 "ok": false,
 "retrieved_off": null,
@@ -2177,8 +2162,8 @@
 "question": "Which valve isolates the suction of pump P-201?",
 "route": "documents",
 "nodes": [],
-"total_ms": 24969,
-"answer": "Not in the knowledge base.",
+"total_ms": 702,
+"answer": "It is not in the knowledge base.",
 "sql": null,
 "ok": false,
 "retrieved_off": null,
@@ -2191,8 +2176,8 @@
 "question": "Which instrument controls the flow into tank T-202, and through which valve?",
 "route": "documents",
 "nodes": [],
-"total_ms": 32898,
-"answer": "According to passage [1] (PID-001), the instrument that controls the flow is FIC-101: FIC flow indicating controller, and according to passage [2] (PID-003), it sits between E-301 and T-302, which is the FCV-301: Flow control valve.",
+"total_ms": 1268,
+"answer": "Not in the knowledge base.",
 "sql": null,
 "ok": false,
 "retrieved_off": null,
@@ -2205,8 +2190,8 @@
 "question": "What does LT-201 measure, and on which equipment?",
 "route": "documents",
 "nodes": [],
-"total_ms": 37538,
-"answer": "According to passage [2] (PID-002), LT-201 measures level, and it is connected to T-201.",
+"total_ms": 1144,
+"answer": "The passage that answers the question is [1] (PID-002). According to this passage, LT-201 measures level, and it is connected to T-201.",
 "sql": null,
 "ok": true,
 "retrieved_off": null,
@@ -2219,8 +2204,8 @@
 "question": "Which drawing shows heat exchanger E-201, and what unit is it?",
 "route": "documents",
 "nodes": [],
-"total_ms": 40911,
-"answer": "The passage that shows heat exchanger E-201 is [1] (PID-002) and [3] (PID-001). \n\nThe unit of heat exchanger E-201 is not explicitly stated in the passages.",
+"total_ms": 1006,
+"answer": "The drawing that shows heat exchanger E-201 is [1] (PID-002). The unit of heat exchanger E-201 is not specified in the passages.",
 "sql": null,
 "ok": false,
 "retrieved_off": null,
@@ -2233,10 +2218,10 @@
 "question": "Which valve isolates the suction of pump P-301?",
 "route": "documents",
 "nodes": [],
-"total_ms": 26139,
-"answer": "It is not in the knowledge base.",
+"total_ms": 986,
+"answer": "The valve that isolates the suction of pump P-301 is HV-301, the Hand isolation valve, which sits between LT-301 (Level transmitter) and P-301 (Pump).",
 "sql": null,
-"ok": false,
+"ok": true,
 "retrieved_off": null,
 "retrieved_on": null
 },
@@ -2247,8 +2232,8 @@
 "question": "Which instrument controls the flow into tank T-302, and through which valve?",
 "route": "documents",
 "nodes": [],
-"total_ms": 32701,
-"answer": "According to passage [2] (PID-003), the instrument that controls the flow into tank T-302 is the FIC-301: Flow indicating controller, and it sits between E-301 and T-302.",
+"total_ms": 947,
+"answer": "It is not in the knowledge base. The passages do not provide information on which instrument controls the flow into tank T-302 or through which valve.",
 "sql": null,
 "ok": false,
 "retrieved_off": null,
@@ -2261,8 +2246,8 @@
 "question": "What does LT-301 measure, and on which equipment?",
 "route": "documents",
 "nodes": [],
-"total_ms": 37776,
-"answer": "According to passage [2] (PID-003), LT-301 measures level, and it is connected to T-301.",
+"total_ms": 937,
+"answer": "The passage that answers the question is [1] (PID-003). According to this passage, LT-301 measures the level of T-301.",
 "sql": null,
 "ok": true,
 "retrieved_off": null,
@@ -2275,8 +2260,8 @@
 "question": "Which drawing shows heat exchanger E-301, and what unit is it?",
 "route": "documents",
 "nodes": [],
-"total_ms": 29554,
-"answer": "It is not in the knowledge base.",
+"total_ms": 961,
+"answer": "The drawing that shows heat exchanger E-301 is not specified in the passages. However, it is mentioned that E-301 is a heat exchanger.",
 "sql": null,
 "ok": false,
 "retrieved_off": null,
