@@ -1,6 +1,6 @@
 # ragcap
 
-Live showcase (static, recorded runs): https://shreenathacc22.github.io/ragcap/  ·  Vercel: `vercel.json` serves `site/` (deployment steps on slide 13 of the deck).
+Showcase site (static, recorded runs): `site/`, to be published at https://shreenathacc22.github.io/ragcap-m5/ (not published yet)  ·  Vercel: `vercel.json` serves `site/` (deployment steps on slide 13 of the deck).
 
 A reproduction of Kumar's RAG Capstone design (LangGraph router, document RAG with grade/rewrite, SQL agent, general agent, Postgres + pgvector, FastAPI, Gradio) on local models, plus a frozen evaluation set with quality metrics and a version-aware retrieval filter.
 

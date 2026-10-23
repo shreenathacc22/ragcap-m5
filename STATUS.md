@@ -1,8 +1,8 @@
 # ragcap: project status
 
-Last updated 2026-10-23. Machine: Apple M5 Pro (24 GB, macOS 26.6). Repo: https://github.com/shreenathacc22/ragcap · Live site: https://shreenathacc22.github.io/ragcap/
+Last updated 2026-10-23. Machine: Apple M5 Pro (24 GB, macOS 26.6). Repo: https://github.com/shreenathacc22/ragcap-m5 (public) · Site: https://shreenathacc22.github.io/ragcap-m5/ (not published yet)
 
-The system is built, tested and documented on this machine. `./recreate.sh` ends `RECREATE OK` with every fingerprint matching, `./services.sh check` ends `CLEAN START OK`, and `scenarios.py` has no unexpected failures. Evidence for every item: `docs/SOP_ragcap_build.pdf`.
+The system is built, tested and documented on this machine. `./recreate.sh` ends `RECREATE OK` with every fingerprint matching, `./services.sh check` ends `CLEAN START OK`, and `scenarios.py` has no unexpected failures. Evidence for every item: `docs/SOP_ragcap_build.pdf`. Code: public repository `ragcap-m5` (git works on this Mac through `/Applications/Xcode.app/Contents/Developer/usr/bin/git`).
 
 Start after a reboot: `./services.sh start && ./services.sh check`.
 
@@ -22,9 +22,8 @@ Start after a reboot: `./services.sh start && ./services.sh check`.
 
 | Item | Why not done | What's needed |
 |---|---|---|
-| Push the repository | Deferred to the deployment stage; `git` needs the Xcode license accepted | `sudo xcodebuild -license accept` (admin), then commit and push |
-| Publish the showcase site | Deferred to the deployment stage | `./publish_site.sh` |
-| Vercel deployment | Deferred; needs a Vercel login | vercel.com → sign in with GitHub → Add New → Project → import `shreenathacc22/ragcap` → Framework "Other", Output Directory `site` → Deploy (deck slide 13) |
+| Publish the showcase site | Deferred to the deployment stage | `./publish_site.sh` (publishes to the `gh-pages` branch of ragcap-m5) |
+| Vercel deployment | Deferred; needs a Vercel login | vercel.com → sign in with GitHub → Add New → Project → import `shreenathacc22/ragcap-m5` → Framework "Other", Output Directory `site` → Deploy (deck slide 13) |
 | LangSmith tracing | Deferred; needs an API key | `.env`: `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY=...`, `LANGSMITH_PROJECT=ragcap` |
 | Switch to the recommended profile | Your choice; lean is the default | add `GRADE_MODEL=qwen3:8b`, `GRADE_MODE=escalate`, `GRADE_MAX_TOKENS=600` to `.env` |
 | P&ID relational questions | A bigger grader and a bigger answering model both fail M1/M2 although the right drawing is retrieved | store each drawing's connections as structured rows the SQL agent can query |

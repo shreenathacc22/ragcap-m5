@@ -36,7 +36,7 @@
     <div class="tile"><b>96%</b><span>answers correct on the unseen set with a qwen3:8b second-opinion grader (80% without)</span></div>
   </div>
   <p class="links">
-    <a href="https://github.com/shreenathacc22/ragcap">GitHub repository</a>
+    <a href="https://github.com/shreenathacc22/ragcap-m5">GitHub repository</a>
     <a href="docs/SOP_ragcap_build.pdf">SOP: how it was built (PDF)</a>
     <a href="docs/RUNBOOK_ragcap_operations.pdf">Runbook (PDF)</a>
     <a href="docs/INSTALL_ragcap.pdf">Install and use (PDF)</a>
@@ -133,7 +133,7 @@
 
 <section>
   <h2>Run it yourself</h2>
-  <pre>git clone https://github.com/shreenathacc22/ragcap && cd ragcap
+  <pre>git clone https://github.com/shreenathacc22/ragcap-m5 && cd ragcap-m5
 ollama pull llama3.2:3b; ollama pull nomic-embed-text   # no Docker: pgctl.sh runs Postgres natively
 ./recreate.sh                      # database, ingest, checks, fingerprints, OFF/ON ablation, smoke questions
 ./services.sh start && ./services.sh check   # after a reboot: ends CLEAN START OK
@@ -165,7 +165,7 @@ VERSION_AWARE=0 .venv/bin/python try.py "At what disk utilisation should a broke
   </ul>
 </section>
 
-<footer>ragcap · built and measured on an Apple M5 Pro, October 2026 · <a href="https://github.com/shreenathacc22/ragcap">github.com/shreenathacc22/ragcap</a></footer>
+<footer>ragcap · built and measured on an Apple M5 Pro, October 2026 · <a href="https://github.com/shreenathacc22/ragcap-m5">github.com/shreenathacc22/ragcap-m5</a></footer>
 
 <script>
 fetch('data/replay.json').then(r => r.json()).then(d => {

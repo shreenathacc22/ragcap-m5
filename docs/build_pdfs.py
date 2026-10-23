@@ -34,7 +34,7 @@ def build(name, title, story):
     SimpleDocTemplate(OUT + name, pagesize=letter, leftMargin=0.7 * inch, rightMargin=0.7 * inch,
                       topMargin=0.7 * inch, bottomMargin=0.8 * inch, title=title).build(story, onFirstPage=foot, onLaterPages=foot)
 
-BASE = "ragcap"   # the clone of github.com/shreenathacc22/ragcap
+BASE = "ragcap"   # the clone of github.com/shreenathacc22/ragcap-m5
 
 # ------------------------------------------------------------------ SOP
 sop = [

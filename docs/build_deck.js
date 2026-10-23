@@ -13,7 +13,7 @@ pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFac
 pres.title = "ragcap: a multi-agent RAG system, built and measured"; pres.author = "Shreenath Shetty";
 const C = pres.SchemeColor;
 const IMG = (f) => path.join(__dirname, "img", f);
-const PAGES = "https://shreenathacc22.github.io/ragcap/", REPO = "https://github.com/shreenathacc22/ragcap";
+const PAGES = "https://shreenathacc22.github.io/ragcap-m5/", REPO = "https://github.com/shreenathacc22/ragcap-m5";
 
 // ---- layouts
 pres.defineSlideMaster({ title: "DARK", background: { color: THEME.colors.dk2 },
@@ -21,7 +21,7 @@ pres.defineSlideMaster({ title: "DARK", background: { color: THEME.colors.dk2 },
             { placeholder: { options: { name: "body", type: "body", x: 0.6, y: 2.7, w: 8.8, h: 1.9, fontSize: 15, color: C.background1, margin: 0 }, text: "" } }] });
 pres.defineSlideMaster({ title: "CONTENT", background: { color: THEME.colors.lt1 },
   objects: [{ placeholder: { options: { name: "title", type: "title", x: 0.5, y: 0.35, w: 9.0, h: 0.7, fontSize: 28, bold: true, color: C.text2, margin: 0 }, text: "" } },
-            { text: { text: "ragcap  ·  github.com/shreenathacc22/ragcap", options: { x: 0.5, y: 5.2, w: 6, h: 0.3, fontSize: 9, color: C.accent5, margin: 0 } } }],
+            { text: { text: "ragcap  ·  github.com/shreenathacc22/ragcap-m5", options: { x: 0.5, y: 5.2, w: 6, h: 0.3, fontSize: 9, color: C.accent5, margin: 0 } } }],
   slideNumber: { x: 9.1, y: 5.2, w: 0.5, h: 0.3, fontSize: 9, color: THEME.colors.accent5 } });
 
 // ---- helpers (fresh option objects every call)
@@ -200,12 +200,12 @@ s.addNotes("This was the colleague's proposed direction. The scaffold and the me
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Showcase" });
 s.addText("See it, test it", { placeholder: "title" });
 s.addImage({ path: IMG("site_top.png"), x: 0.5, y: 1.15, w: 4.7, h: 3.4, objectName: "showcase site screenshot", altText: "the ragcap showcase site" });
-s.addText([{ text: "Live showcase (GitHub Pages, static): ", options: { bold: true } }, { text: PAGES, options: { hyperlink: { url: PAGES }, color: C.accent1 } }],
+s.addText([{ text: "Showcase (GitHub Pages, once published): ", options: { bold: true } }, { text: PAGES, options: { hyperlink: { url: PAGES }, color: C.accent1 } }],
   { x: 5.4, y: 1.15, w: 4.1, h: 0.6, fontSize: 12, color: C.text1, isTextBox: true, margin: 0 });
 s.addText("Results, the flow, screenshots, the documents, and a replay of 64 recorded runs: pick a question, see its route, node timings, answer, and for version cases the documents retrieved OFF vs ON.", { x: 5.4, y: 1.75, w: 4.1, h: 0.9, fontSize: 10.5, color: C.text1, isTextBox: true, margin: 0, valign: "top" });
 s.addText([{ text: "Test it live (Ollama + Python 3.12; a few minutes):", options: { bold: true, breakLine: true } },
-  { text: "git clone " + REPO, options: { fontFace: "Courier New", fontSize: 9.5, breakLine: true } },
-  { text: "cd ragcap && ./recreate.sh", options: { fontFace: "Courier New", fontSize: 9.5, breakLine: true } },
+  { text: "git clone " + REPO, options: { fontFace: "Courier New", fontSize: 8.5, breakLine: true } },
+  { text: "cd ragcap-m5 && ./recreate.sh", options: { fontFace: "Courier New", fontSize: 9.5, breakLine: true } },
   { text: "Then try the scenario catalogue in docs/RECREATE.pdf, for example:", options: { breakLine: true } },
   { text: "python scenarios.py → 12 pass, 5 known weaknesses, 0 unexpected", options: { fontSize: 10, breakLine: true } },
   { text: "python b1_eval.py → old versions retrieved 51.6% OFF, 0% ON", options: { fontSize: 10, breakLine: true } },
@@ -219,11 +219,11 @@ s.addNotes("The site is static: the replay is recorded. recreate.sh exits 1 if a
 pres.addSection({ title: "Deploy" });
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Deploy" });
 s.addText("Deploying the site to Vercel, step by step", { placeholder: "title" });
-const vs = [["1", "Sign in", "vercel.com → Continue with GitHub (the account that owns shreenathacc22/ragcap)."],
-  ["2", "Import", "Add New → Project → Import Git Repository → shreenathacc22/ragcap. Authorise the Vercel GitHub app for this repo if asked."],
+const vs = [["1", "Sign in", "vercel.com → Continue with GitHub (the account that owns shreenathacc22/ragcap-m5)."],
+  ["2", "Import", "Add New → Project → Import Git Repository → shreenathacc22/ragcap-m5. Authorise the Vercel GitHub app for this repo if asked."],
   ["3", "Settings", "Framework Preset: Other. Root Directory: leave as the repo root. Build Command: empty. Output Directory: site (vercel.json already says so)."],
   ["4", "Deploy", "Click Deploy; the first URL looks like ragcap-<hash>.vercel.app and opens the same site as GitHub Pages."],
-  ["5", "Domain", "Settings → Domains → add ragcap.vercel.app (or any free name); paste the URL into README.md and the site, run publish_site.sh."],
+  ["5", "Domain", "Settings → Domains → add ragcap-m5.vercel.app (or any free name); paste the URL into README.md and the site, run publish_site.sh."],
   ["6", "Keep it current", "Every git push to main redeploys; the Deployments tab shows each build. CLI alternative: npm i -g vercel && vercel login && vercel --prod."]];
 vs.forEach((v, i) => { const col = i % 2, row = Math.floor(i / 2), x = 0.5 + col * 4.6, y = 1.15 + row * 1.25;
   s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.08, w: 0.5, h: 0.5, fill: { color: F.dk2 }, line: { color: F.dk2 }, objectName: "vercel step " + v[0] });
@@ -236,7 +236,7 @@ s.addNotes("Three minutes in the Vercel dashboard. The CLI path needs an interac
 // ================= 14 recreate
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Deploy" });
 s.addText("Recreating it anywhere", { placeholder: "title" });
-s.addText([{ text: "git clone " + REPO + " && cd ragcap", options: { breakLine: true } }, { text: "ollama pull llama3.2:3b; ollama pull nomic-embed-text   # no Docker needed", options: { breakLine: true } },
+s.addText([{ text: "git clone " + REPO + " && cd ragcap-m5", options: { breakLine: true } }, { text: "ollama pull llama3.2:3b; ollama pull nomic-embed-text   # no Docker needed", options: { breakLine: true } },
   { text: "./recreate.sh          # DB, ingest, checks, fingerprints, OFF/ON ablation, smoke questions", options: { breakLine: true } },
   { text: ".venv/bin/uvicorn api:app --port 8000     # http://127.0.0.1:8000/", options: { breakLine: true } },
   { text: "./services.sh start && ./services.sh check   # after a reboot: CLEAN START OK", options: { breakLine: true } },

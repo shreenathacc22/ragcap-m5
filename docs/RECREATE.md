@@ -18,7 +18,7 @@ How to install each tool, with download locations: `docs/INSTALL_AND_USE.md`.
 
 ## 1. Get the code
 
-`git clone https://github.com/shreenathacc22/ragcap && cd ragcap`, or use the project's `build` folder. Never copy `.venv`, `.pgdata/`, `uploads/` or `traces.jsonl` from another machine: the rebuild makes new ones. A copied `.env` may be kept.
+`git clone https://github.com/shreenathacc22/ragcap-m5 && cd ragcap-m5`, or use the project's `build` folder. Never copy `.venv`, `.pgdata/`, `uploads/` or `traces.jsonl` from another machine: the rebuild makes new ones. A copied `.env` may be kept.
 
 | Path | What it is |
 |---|---|
